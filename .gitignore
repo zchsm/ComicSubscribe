@@ -1,0 +1,7 @@
+.directory
+*.py[cod]
+
+.idea/
+__pycache__/
+crawler/__pycache__/
+crawler/modules/__pycache__/
