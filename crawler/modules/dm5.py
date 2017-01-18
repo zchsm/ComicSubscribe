@@ -43,6 +43,6 @@ def get_image(referer, url):
     header = default
     header["Referer"] = referer
     header["Host"] = u[1]
-    header.pop("X-Requested-With")
+    header["X-Requested-With"] = "XMLHttpRequest"
     response = do_request(url, header)
     return {"filename": filename, "data": response.read()}
