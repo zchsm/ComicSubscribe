@@ -3,7 +3,7 @@
 
 import re
 import execjs
-from crawler.crawler import get_content, do_request, default
+from crawler.utils import get_content, do_request, default
 from urllib.parse import urljoin, urlsplit
 from os.path import split
 

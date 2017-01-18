@@ -2,11 +2,10 @@
 # -*- coding: utf-8 -*-
 
 from crawler.comic import Comic
-from crawler.crawler import save_image
+from crawler.utils import save_image
 from config import setting
-from os.path import exists
+from os.path import exists, join
 from urllib import parse
-from os.path import join
 from os import mkdir
 
 
@@ -38,3 +37,11 @@ def analyse(comic_url):
     if not exists(path):
         mkdir(path)
     return path
+
+
+def crawler():
+    it = read()
+    for u in it:
+        print(u)
+        p = analyse(u)
+        download(u, p)
