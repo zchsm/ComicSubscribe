@@ -37,5 +37,5 @@ class Config(ConfigParser):
         if not exists(download_folder):
             mkdir(download_folder)
 
-config = Config("~/Comic/config")
+config = Config("~/Comics/config")
 setting = {key: value for key, value in config.items("Config")}
