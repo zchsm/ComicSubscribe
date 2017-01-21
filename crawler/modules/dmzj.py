@@ -12,7 +12,7 @@ domain = "manhua.dmzj.com"
 
 def get_comic(url):
     content = get_content(url)
-    scope_pattern = re.compile(r"<div class=\"cartoon_online_border\" (style=\"display:none\")>.*?<ul>(.*?)</ul>", re.S)
+    scope_pattern = re.compile(r"<div class=\"cartoon_online_border\" (style=\"display:none\")?>.*?<ul>(.*?)</ul>", re.S)
     # chapters_content = scope_pattern.search(content)
     chapters_content_it = scope_pattern.finditer(content)
     chapters = []
