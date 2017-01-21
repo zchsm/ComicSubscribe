@@ -63,4 +63,3 @@ def crawler():
         print(u)
         p = analyse(u)
         download(u, p)
-        compress(p)

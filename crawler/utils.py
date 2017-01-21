@@ -3,6 +3,7 @@
 
 from urllib import request, parse
 from gzip import decompress
+from os.path import split
 
 default = {
     "Accept-Encoding": "gzip, deflate",
@@ -15,7 +16,7 @@ def do_request(url, header=None):
     if header is None:
         header = default
     try:
-        url = parse.quote(url, safe="/:?=&")
+        url = parse.quote(url, safe="%/:?=&")
         req = request.Request(url, headers=header)
         res = request.urlopen(req, timeout=20)
         return res
@@ -25,8 +26,16 @@ def do_request(url, header=None):
 
 def get_content(url, header=None):
     response = do_request(url, header)
-    content = decompress(response.read())
+    if response.getheader("Content-Encoding") == "gzip":
+        content = decompress(response.read())
+    else:
+        content = response.read()
     return content.decode("utf-8", "ignore")
+
+
+def get_image_name(url):
+    u = parse.urlsplit(url)  # schema, netloc, path, query, fragment
+    return split(u[2])[1]
 
 
 def save_image(file, content):
